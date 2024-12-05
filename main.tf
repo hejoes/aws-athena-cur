@@ -330,9 +330,8 @@ resource "aws_sqs_queue" "crawler_queue" {
   name                       = "cur-crawler-queue"
   visibility_timeout_seconds = 300
   message_retention_seconds  = 86400 # 1 day
-  receive_wait_time_seconds  = 20    # Enable long polling
+  receive_wait_time_seconds  = 20
 
-  # Dead Letter Queue Policy
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.crawler_dlq.arn
     maxReceiveCount     = 3
@@ -367,16 +366,3 @@ resource "aws_sqs_queue_policy" "crawler_queue_policy" {
   })
 }
 
-
-# Outputs
-output "cur_bucket_name" {
-  value = module.s3_bucket.s3_bucket_id
-}
-
-output "athena_workgroup_name" {
-  value = aws_athena_workgroup.cur_workgroup.name
-}
-
-output "glue_database_name" {
-  value = aws_glue_catalog_database.cur_database.name
-}
