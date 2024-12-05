@@ -24,7 +24,7 @@ regular aws services like Cost Explorer.
    sent to
    [SQS DLQ](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 1. Athena uses the contexts from Glue Catalogue to query the data from the CUR
-   bucket
+   bucket.
 
 ## 🎯 Use cases
 
@@ -33,3 +33,7 @@ regular aws services like Cost Explorer.
    . For example, you can setup the Athena datasource in Grafana and create your
    custom dashboards with SQL. Since CUR consists of very detailed data, the
    possibilities for different views are large.
+1. [AWS Cloud Intelligence Dashboards](https://wellarchitectedlabs.com/cloud-intelligence-dashboards/)
+   Use CUR as their primary data source. This infra setup enables compatibility
+   with these AWS's pre-built dashboards.
+   [Demo CUDOS dashboard](https://d1s0yx3p3y3rah.cloudfront.net/anonymous-embed?dashboard=cudos)
