@@ -1,12 +1,10 @@
-# 
+# 💰 AWS Cost Analytics
 
-# 
+This infrastructure automatically processes AWS Cost And Usage Reports. It
+prepares the data stored on S3 in partitioned and formatted state via AWS Glue,
+making it ready for querying using AWS Athena.
 
-This infra automatically processes AWS Cost And Usage Reports. It prepares the
-data stored on S3 in partitioned and formatted state via AWS Glue, making it
-ready for querying using AWS Athena.
-
-## How it works
+## 🔄 How it works
 
 <img src="https://i.imgur.com/8xwlWlp.png" alt="AWS Architecture" height="350" width="425">
 
@@ -26,7 +24,7 @@ ready for querying using AWS Athena.
 1. Athena uses the contexts from Glue Catalogue to query the data from the CUR
    bucket
 
-## Use cases
+## 🎯 Use cases
 
 1. I think this setup could replace/offer better alternative to
    [Kubecost Cloud Costs](https://docs.kubecost.com/using-kubecost/navigating-the-kubecost-ui/cloud-costs-explorer)
