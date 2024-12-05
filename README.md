@@ -2,13 +2,15 @@
 
 This infrastructure automatically processes AWS Cost And Usage Reports. It
 prepares the data stored on S3 in partitioned and formatted state via AWS Glue,
-making it ready for querying using AWS Athena.
+making it ready for querying using AWS Athena. Queries can then be used to
+create detailed cost analysis that offer more fine-grained insights than using
+regular aws services like Cost Explorer.
 
 ## 🔄 How it works
 
 <img src="https://i.imgur.com/8xwlWlp.png" alt="AWS Architecture" height="350" width="425">
 
-1. AWS Generates CUR reports and stores them on S3. These reports contain
+1. The script generates CUR reports and stores them on S3. These reports contain
    detailed billing information for your account.
 1. Changes in the CUR bucket trigger S3 event-notifications.
 1. Glue Crawler is working in event-mode and monitors new messages in SQS coming
