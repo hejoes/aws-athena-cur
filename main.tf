@@ -237,8 +237,9 @@ resource "aws_glue_crawler" "cur_crawler" {
   role          = aws_iam_role.glue_role.arn
 
   s3_target {
-    path            = "s3://${module.s3_bucket.s3_bucket_id}/cur"
-    event_queue_arn = aws_sqs_queue.crawler_queue.arn
+    path                = "s3://${module.s3_bucket.s3_bucket_id}/cur"
+    event_queue_arn     = aws_sqs_queue.crawler_queue.arn
+    dlq_event_queue_arn = aws_sqs_queue.crawler_dlq.arn
   }
 
   recrawl_policy {
@@ -304,13 +305,7 @@ resource "aws_iam_role_policy" "glue_policy" {
       {
         Effect = "Allow"
         Action = [
-          "sqs:DeleteMessage",
-          "sqs:GetQueueUrl",
-          "sqs:ListQueues",
-          "sqs:ChangeMessageVisibility",
-          "sqs:ReceiveMessage",
-          "sqs:GetQueueAttributes",
-          "sqs:SetQueueAttributes"
+          "sqs:*",
         ]
         Resource = [
           aws_sqs_queue.crawler_queue.arn,
